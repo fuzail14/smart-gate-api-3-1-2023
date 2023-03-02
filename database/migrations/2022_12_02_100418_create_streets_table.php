@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('streets', function (Blueprint $table) {
             $table->id();
             $table->string('address');
+            $table->string('type');
+            
             $table->string('iteration');
 
             $table->unsignedBigInteger('dynamicid');

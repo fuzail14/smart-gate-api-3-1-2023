@@ -74,7 +74,9 @@ class BlockController extends Controller
             'address' => 'required',
             'from' => 'required|integer',
             'to' => 'required|integer|gt:from',
-            'dynamicid' => 'required'
+            'dynamicid' => 'required',
+            'type' => 'required'
+            
         ]);
 
         if ($isValidate->fails()) {
@@ -105,7 +107,9 @@ class BlockController extends Controller
                         'created_at' => date('Y-m-d H:i:s'),
                         'updated_at' => date('Y-m-d H:i:s'),
                         'iteration' => $i,
-                        'dynamicid' => $request->dynamicid
+                        'dynamicid' => $request->dynamicid,
+                        'type' => $request->type
+                        
                     ],
 
                 ]
@@ -136,11 +140,11 @@ class BlockController extends Controller
 
 
 
-    public function blocks($pid)
+    public function blocks($dynamicid,$type)
 
     {
 
-        $blocks =  Block::where('pid', $pid)->get();
+        $blocks =  Block::where('dynamicid', $dynamicid)->where('type',$type)->get();
 
 
         return response()->json([

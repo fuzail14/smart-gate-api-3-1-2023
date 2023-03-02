@@ -65,7 +65,7 @@ class PhaseController extends Controller
 
 
 
-    public function phases($subadminid)
+    public function phases($societyid)
     {
 
         //  $isValidate = Validator::make($request->all(), [
@@ -79,7 +79,7 @@ class PhaseController extends Controller
         //             "success" => false
         //         ], 403);
         //     }
-        $phases =  Phase::where('subadminid', $subadminid)->get();
+        $phases =  Phase::where('societyid', $societyid)->get();
 
 
 

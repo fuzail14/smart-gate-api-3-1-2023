@@ -119,13 +119,13 @@ Route::get('preapproveentryhistories/{userid}', [PreApproveEntryController::clas
 
 // Phases
 Route::post('addphases', [PhaseController::class, 'addphases']);
-Route::get('phases/{subadminid}', [PhaseController::class, 'phases']);
+Route::get('phases/{societyid}', [PhaseController::class, 'phases']);
 Route::get('distinctphases/{subadminid}', [PhaseController::class, 'distinctphases']);
 Route::get('viewphasesforresidents/{societyid}', [PhaseController::class, 'viewphasesforresidents']);
 
 // Blocks
 Route::post('addblocks', [BlockController::class, 'addblocks']);
-Route::get('blocks/{pid}', [BlockController::class, 'blocks']);
+Route::get('blocks/{dynamicid}/{type}', [BlockController::class, 'blocks']);
 Route::get('distinctblocks/{bid}', [BlockController::class, 'distinctblocks']);
 Route::get('viewblocksforresidents/{phaseid}', [BlockController::class, 'viewblocksforresidents']);
 
@@ -133,7 +133,7 @@ Route::get('viewblocksforresidents/{phaseid}', [BlockController::class, 'viewblo
 Route::get('viewblocksforresidents/{phaseid}', [BlockController::class, 'viewblocksforresidents']);
 // Streets
 Route::post('addstreets', [StreetController::class, 'addstreets']);
-Route::get('streets/{bid}', [StreetController::class, 'streets']);
+Route::get('streets/{dynamicid}/{type}', [StreetController::class, 'streets']);
 Route::get('viewstreetsforresidents/{blockid}', [StreetController::class, 'viewstreetsforresidents']);
 
 // Property

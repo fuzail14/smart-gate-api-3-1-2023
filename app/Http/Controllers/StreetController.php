@@ -123,7 +123,8 @@ class StreetController extends Controller
             'address' => 'required',
             'from' => 'required|integer',
             'to' => 'required|integer|gt:from',
-            'dynamicid' => 'required'
+            'dynamicid' => 'required',
+            'type' => 'required'
         ]);
 
         if ($isValidate->fails()) {
@@ -153,7 +154,8 @@ class StreetController extends Controller
                         'created_at' => date('Y-m-d H:i:s'),
                         'updated_at' => date('Y-m-d H:i:s'),
                         'iteration' => $i,
-                        'dynamicid' => $request->dynamicid
+                        'dynamicid' => $request->dynamicid,
+                        'type' => $request->type
                     ],
 
                 ]
@@ -168,11 +170,11 @@ class StreetController extends Controller
         ]);
     }
 
-    public function streets($dynamicid)
+    public function streets($dynamicid, $type)
 
     {
 
-        $streets =  Street::where('dynamicid', $dynamicid)->get();
+        $streets =  Street::where('dynamicid', $dynamicid)->where('type', $type)->get();
 
         return response()->json([
             "success" => true,
