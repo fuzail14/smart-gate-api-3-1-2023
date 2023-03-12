@@ -14,8 +14,13 @@ class SocietyBuildingController extends Controller
     public function addsocietybuilding(Request $request)
     {
         $isValidate = Validator::make($request->all(), [
-            'pid' => 'required|exists:phases,id',
-            'societybuildingname' => 'required|string',
+
+            'subadminid' => 'required|exists:users,id',
+            'societyid' => 'required|exists:societies,id',
+            'superadminid' => 'required|exists:users,id',
+            'societybuildingname' => 'required',
+
+            'dynamicid' => 'required'
 
         ]);
 
@@ -28,8 +33,15 @@ class SocietyBuildingController extends Controller
 
         $societybuildingresident = new Societybuilding;
 
-        $societybuildingresident->pid = $request->pid;
+        $societybuildingresident->subadminid = $request->subadminid;
+        $societybuildingresident->societyid = $request->societyid;
+        $societybuildingresident->superadminid = $request->superadminid;
+
         $societybuildingresident->societybuildingname = $request->societybuildingname;
+        $societybuildingresident->dynamicid = $request->dynamicid;
+
+
+
         $societybuildingresident->save();
 
 
@@ -47,13 +59,13 @@ class SocietyBuildingController extends Controller
     }
 
 
-    
 
-    public function societybuildings($pid)
+
+    public function societybuildings($dynamicid)
     {
-        
 
-        $societybuildingresident = Societybuilding::where('pid', $pid)->get();
+
+        $societybuildingresident = Societybuilding::where('dynamicid', $dynamicid)->get();
 
 
 
@@ -65,5 +77,4 @@ class SocietyBuildingController extends Controller
 
         ]);
     }
-
 }

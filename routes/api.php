@@ -146,7 +146,7 @@ Route::get('viewpropertiesforresidents/{streetid}', [PropertyController::class, 
 // Society Building
 
 Route::post('addsocietybuilding', [SocietyBuildingController::class, 'addsocietybuilding']);
-Route::get('societybuildings/{pid}', [SocietyBuildingController::class, 'societybuildings']);
+Route::get('societybuildings/{dynamicid}', [SocietyBuildingController::class, 'societybuildings']);
 
 
 Route::post('addsocietybuildingfloors', [SocietyBuildingFloorController::class, 'addsocietybuildingfloors']);

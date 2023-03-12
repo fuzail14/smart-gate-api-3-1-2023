@@ -15,9 +15,17 @@ class CreateSocietybuildingsTable extends Migration
     {
         Schema::create('societybuildings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('pid');
-            $table->foreign('pid')->references('id')->on('phases')->onDelete('cascade');
+            $table->unsignedBigInteger('subadminid');
+            $table->foreign('subadminid')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('superadminid');
+            $table->foreign('superadminid')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('societyid');
+            $table->foreign('societyid')->references('id')->on('societies')->onDelete('cascade');
+
             $table->string('societybuildingname');
+            $table->unsignedBigInteger('dynamicid');
+
+
 
             $table->timestamps();
         });
