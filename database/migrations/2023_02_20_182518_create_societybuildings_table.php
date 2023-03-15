@@ -24,6 +24,8 @@ class CreateSocietybuildingsTable extends Migration
 
             $table->string('societybuildingname');
             $table->unsignedBigInteger('dynamicid');
+            $table->string('type');
+            
 
 
 

@@ -2,20 +2,16 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\Floor;
-
 use Illuminate\Http\Request;
+use App\Models\Localbuildingfloor;
+
+
 use Illuminate\Support\Facades\Validator;
 
-
-
-class FloorController extends Controller
+class LocalBuildingFloorController extends Controller
 {
     //
-
-
-    public function addfloors(Request $request)
+    public function addlocalbuildingfloors(Request $request)
     {
 
         $isValidate = Validator::make($request->all(), [
@@ -33,7 +29,7 @@ class FloorController extends Controller
                 "success" => false
             ], 403);
         }
-        $floors = new Floor();
+        $floors = new Localbuildingfloor();
         $from = (int) $request->from;
         $to = (int) $request->to;
 
@@ -109,14 +105,14 @@ class FloorController extends Controller
     // }
 
 
-    public function viewfloorsforresidents($buildingid)
+    public function viewlocalbuildingfloors($buildingid)
     {
-        $floors = Floor::where('buildingid', $buildingid)->get();
+        $floors = Localbuildingfloor::where('buildingid', $buildingid)->get();
 
         return response()->json(["data" => $floors]);
     }
 
-public function floors($subadminid)
+    public function floors($subadminid)
     {
 
         //  $isValidate = Validator::make($request->all(), [
@@ -130,7 +126,7 @@ public function floors($subadminid)
         //             "success" => false
         //         ], 403);
         //     }
-        $floors =  Floor::where('subadminid', $subadminid)->get();
+        $floors =  Localbuildingfloor::where('subadminid', $subadminid)->get();
 
 
 
@@ -141,5 +137,4 @@ public function floors($subadminid)
             "data" => $floors,
         ]);
     }
-
 }

@@ -20,7 +20,9 @@ class SocietyBuildingController extends Controller
             'superadminid' => 'required|exists:users,id',
             'societybuildingname' => 'required',
 
-            'dynamicid' => 'required'
+            'dynamicid' => 'required',
+            'type' => 'required',
+
 
         ]);
 
@@ -39,6 +41,8 @@ class SocietyBuildingController extends Controller
 
         $societybuildingresident->societybuildingname = $request->societybuildingname;
         $societybuildingresident->dynamicid = $request->dynamicid;
+        $societybuildingresident->type = $request->type;
+
 
 
 
@@ -61,11 +65,11 @@ class SocietyBuildingController extends Controller
 
 
 
-    public function societybuildings($dynamicid)
+    public function societybuildings($dynamicid, $type)
     {
 
 
-        $societybuildingresident = Societybuilding::where('dynamicid', $dynamicid)->get();
+        $societybuildingresident = Societybuilding::where('dynamicid', $dynamicid)->where('type', $type)->get();
 
 
 
