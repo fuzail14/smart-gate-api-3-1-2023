@@ -138,7 +138,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
   // Property
   Route::post('addproperties', [PropertyController::class, 'addproperties']);
-  Route::get('properties/{streetid}', [PropertyController::class, 'properties']);
+  Route::get('properties/{streetid}/{type}', [PropertyController::class, 'properties']);
   Route::get('viewpropertiesforresidents/{streetid}', [PropertyController::class, 'viewpropertiesforresidents']);
 
 

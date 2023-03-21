@@ -21,7 +21,9 @@ class PropertyController extends Controller
             'address' => 'required',
             'from' => 'required|integer',
             'to' => 'required|integer|gt:from',
-            'streetid' => 'required',
+            'dynamicid' => 'required',
+            'type' => 'required',
+            
             
 
         ]);
@@ -48,7 +50,9 @@ class PropertyController extends Controller
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
                     'iteration' => $i,
-                    'streetid' => $request->streetid,
+                    'dynamicid' => $request->dynamicid,
+                    'type' => $request->type,
+                    
                     
 
                 ],
@@ -66,9 +70,9 @@ class PropertyController extends Controller
 
 
 
-    public function properties($streetid,)
+    public function properties($dynamicid,$type)
     {
-        $properties =  Property::where('streetid', $streetid)->get();
+        $properties =  Property::where('dynamicid', $dynamicid)->where('type',$type)->get();
 
 
         return response()->json([

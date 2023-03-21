@@ -16,13 +16,15 @@ class CreatePropertiesTable extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
             $table->string('address');
-            
-            
+            $table->string('type');
+
+
+
             $table->string('iteration');
 
-            $table->unsignedBigInteger('streetid');
-            $table->foreign('streetid')->references('id')->on('streets')->onDelete('cascade');
-           
+            $table->unsignedBigInteger('dynamicid');
+
+
 
             $table->unsignedBigInteger('subadminid');
 
@@ -30,7 +32,7 @@ class CreatePropertiesTable extends Migration
 
             $table->unsignedBigInteger('societyid');
             $table->foreign('societyid')->references('id')->on('societies')->onDelete('cascade');
-           
+
             $table->unsignedBigInteger('superadminid');
 
             $table->foreign('superadminid')->references('id')->on('users')->onDelete('cascade');
